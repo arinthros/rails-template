@@ -66,7 +66,7 @@ def set_application_name
   puts "You can change application name inside: ./config/application.rb"
 end
 
-def add_persons
+def add_people
   # Install Devise
   generate "devise:install"
 
@@ -96,7 +96,7 @@ def add_persons
       "  config.secret_key = Rails.application.credentials.secret_key_base"
   end
 
-  # Add Devise masqueradable to persons
+  # Add Devise masqueradable to people
   inject_into_file("app/models/person.rb", "masqueradable, :", after: "devise :")
 end
 
@@ -210,7 +210,7 @@ add_gems
 after_bundle do
   set_application_name
   stop_spring
-  add_persons
+  add_people
   add_webpack
   add_javascript
   add_sidekiq
