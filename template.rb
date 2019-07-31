@@ -40,13 +40,13 @@ end
 def add_gems
   gem 'administrate', github: "thoughtbot/administrate"
   gem 'bootstrap', '~> 4.3', '>= 4.3.1'
-  gem 'devise', '~> 4.6', '>= 4.6.1'
+  gem 'devise', '~> 4.6', '>= 4.6.2'
   gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
-  gem 'devise_masquerade', '~> 0.6.2'
-  gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
+  gem 'devise_masquerade', '~> 0.6.5'
+  gem 'font-awesome-sass', '~> 5.9', '>= 5.9.0'
   gem 'friendly_id', '~> 5.2', '>= 5.2.5'
   gem 'name_of_person', '~> 1.1'
-  gem 'sidekiq', '~> 5.2', '>= 5.2.5'
+  gem 'sidekiq', '~> 5.2', '>= 5.2.7'
 
   if rails_5?
     gsub_file "Gemfile", /gem 'sqlite3'/, "gem 'sqlite3', '~> 1.3.0'"
@@ -97,7 +97,7 @@ def add_persons
   end
 
   # Add Devise masqueradable to persons
-  inject_into_file("app/models/persons.rb", "masqueradable, :", after: "devise :")
+  inject_into_file("app/models/person.rb", "masqueradable, :", after: "devise :")
 end
 
 def add_webpack
