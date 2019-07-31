@@ -45,7 +45,7 @@ def add_gems
   gem 'devise_masquerade', '~> 0.6.5'
   gem 'font-awesome-sass', '~> 5.9', '>= 5.9.0'
   gem 'friendly_id', '~> 5.2', '>= 5.2.5'
-  gem 'name_of_user', '~> 1.1'
+  gem 'name_of_person', '~> 1.1'
   gem 'sidekiq', '~> 5.2', '>= 5.2.7'
 
   if rails_5?
@@ -136,7 +136,7 @@ def copy_templates
   copy_file ".foreman"
 
   directory "app", force: true
-  directory "config", force: true
+  #directory "config", force: true
   directory "lib", force: true
 
   route "get '/terms', to: 'home#terms'"
