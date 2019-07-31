@@ -47,7 +47,6 @@ def add_gems
   gem 'friendly_id', '~> 5.2', '>= 5.2.5'
   gem 'name_of_person', '~> 1.1'
   gem 'sidekiq', '~> 5.2', '>= 5.2.5'
-  gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 
   if rails_5?
     gsub_file "Gemfile", /gem 'sqlite3'/, "gem 'sqlite3', '~> 1.3.0'"
@@ -202,9 +201,6 @@ def stop_spring
   run "spring stop"
 end
 
-def add_sitemap
-  rails_command "sitemap:install"
-end
 
 # Main setup
 add_template_repository_to_source_path
@@ -221,7 +217,6 @@ after_bundle do
   add_friendly_id
 
   copy_templates
-  add_sitemap
 
   # Migrate
   rails_command "db:create"
