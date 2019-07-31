@@ -45,7 +45,7 @@ def add_gems
   gem 'devise_masquerade', '~> 0.6.5'
   gem 'font-awesome-sass', '~> 5.9', '>= 5.9.0'
   gem 'friendly_id', '~> 5.2', '>= 5.2.5'
-  gem 'name_of_person', '~> 1.1'
+  gem 'name_of_user', '~> 1.1'
   gem 'sidekiq', '~> 5.2', '>= 5.2.7'
 
   if rails_5?
@@ -62,11 +62,11 @@ def set_application_name
     environment "config.application_name = Rails.application.class.module_parent_name"
   end
 
-  # Announce the person where he can change the application name in the future.
+  # Announce the user where he can change the application name in the future.
   puts "You can change application name inside: ./config/application.rb"
 end
 
-def add_people
+def add_users
   # Install Devise
   generate "devise:install"
 
@@ -79,7 +79,7 @@ def add_people
   generate "devise:views:bootstrapped"
 
   # Create Devise User
-  generate :devise, "Person",
+  generate :devise, "User",
            "first_name",
            "last_name",
            "admin:boolean"
@@ -96,8 +96,8 @@ def add_people
       "  config.secret_key = Rails.application.credentials.secret_key_base"
   end
 
-  # Add Devise masqueradable to people
-  inject_into_file("app/models/person.rb", "masqueradable, :", after: "devise :")
+  # Add Devise masqueradable to users
+  inject_into_file("app/models/user.rb", "masqueradable, :", after: "devise :")
 end
 
 def add_webpack
@@ -151,7 +151,7 @@ def add_sidekiq
     before: "Rails.application.routes.draw do"
 
   content = <<-RUBY
-    authenticate :person, lambda { |u| u.admin? } do
+    authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
   RUBY
@@ -165,17 +165,17 @@ def add_administrate
     #/announcement_type: Field::String/,
     #"announcement_type: Field::Select.with_options(collection: Announcement::TYPES)"
 
-  gsub_file "app/dashboards/person_dashboard.rb",
+  gsub_file "app/dashboards/user_dashboard.rb",
     /email: Field::String/,
     "email: Field::String,\n    password: Field::String.with_options(searchable: false)"
 
-  gsub_file "app/dashboards/person_dashboard.rb",
+  gsub_file "app/dashboards/user_dashboard.rb",
     /FORM_ATTRIBUTES = \[/,
     "FORM_ATTRIBUTES = [\n    :password,"
 
   gsub_file "app/controllers/admin/application_controller.rb",
     /# TODO Add authentication logic here\./,
-    "redirect_to '/', alert: 'Not authorized.' unless person_signed_in? && current_person.admin?"
+    "redirect_to '/', alert: 'Not authorized.' unless user_signed_in? && current_user.admin?"
 
   environment do <<-RUBY
     # Expose our application's helpers to Administrate
@@ -210,7 +210,7 @@ add_gems
 after_bundle do
   set_application_name
   stop_spring
-  add_people
+  add_users
   add_webpack
   add_javascript
   add_sidekiq
