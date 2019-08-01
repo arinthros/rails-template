@@ -22,8 +22,8 @@ Rails template for new applications. Based on [Jumpstart](https://github.com/exc
 You'll need the following installed to run the template successfully:
 
 * Ruby 2.5 or higher
-* bundler - `gem install bundler`
-* rails - `gem install rails`
+* Bundler - `gem install bundler`
+* Rails 6.0.0.rc2 or higher - `gem install rails` or `gem install rails --pre` (if using rbenv, run `rbenv rehash` after installing rails)
 * Yarn - `brew install yarn` or [Install Yarn](https://yarnpkg.com/en/docs/install)
 * Foreman (optional) - `gem install foreman` - helps run all your
   processes in development
