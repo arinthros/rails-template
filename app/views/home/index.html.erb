@@ -1,8 +1,14 @@
 <h1>Bryson&rsquo;s Rails Starter Template</h1>
 <p class="lead">Use this document as a way to quickly start any new project.<br>All you get is this text and a mostly barebones HTML document.<br>Based on <a href="https://github.com/excid3/jumpstart" target="_blank">Jumpstart</a></p>
-<p>Differences from Jumpstart:</p>
+<h2>Getting Started</h2>
+<p>To add the first administrator:</p>
+<ol>
+    <li><code>rails c</code></li>
+    <li><code>Person.create!(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com', password: 'password', admin: true)</code></li>
+</ol>
+<h2>Differences from Jumpstart:</h2>
 <ul>
-    <li>Users are <code>People</code> | a User is a <code>Person</c></li>
+    <li>Users are <code>People</code> | a User is a <code>Person</code></li>
     <li>Account registration is disabled, use <code>Person.create!()</code> or the admin portal</li>
     <li>Announcements & notifications removed</li>
     <li>Omniauth is gone</li>
