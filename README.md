@@ -40,7 +40,7 @@ A separate `Procfile` is generated for deploying to production.
 * `rails c`
 * `Person.create!(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com', password: 'password', admin: true)`
 
-##Differences from Jumpstart:
+## Differences from Jumpstart
 * Users are `People` | a User is a `Person`
 * Account registration is disabled, use `Person.create!()` or the admin portal
 * Announcements & notifications removed
