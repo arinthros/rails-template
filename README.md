@@ -20,13 +20,13 @@ You'll need the following installed to run the template successfully:
 #### Creating a new app
 
 ```bash
-rails new myapp -d postgresql -m https://raw.githubusercontent.com/excid3/jumpstart/master/template.rb
+rails new myapp -d postgresql -m https://raw.githubusercontent.com/arinthros/rails-template/master/template.rb
 ```
 
 Or if you have downloaded this repo, you can reference template.rb locally:
 
 ```bash
-rails new myapp -d postgresql -m template.rb
+rails new myapp -d postgresql -m ~/path/to/template.rb
 ```
 
 To run your app, use `foreman start`.
@@ -37,8 +37,10 @@ A separate `Procfile` is generated for deploying to production.
 
 
 #### Creating the first user
-* `rails c`
-* `Person.create!(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com', password: 'password', admin: true)`
+```bash
+rails c
+Person.create!(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com', password: 'password', admin: true)
+```
 
 ## Differences from Jumpstart
 * Users are `People` | a User is a `Person`
