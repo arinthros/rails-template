@@ -2,7 +2,18 @@
 
 Rails template for new applications. Based on [Jumpstart](https://github.com/excid3/jumpstart).
 
-**Note:** Requires Rails 5.2 or higher
+**Note:** Requires Rails 6.0.0.rc2 or higher
+
+## Changes to Jumpstart
+* Users are `People` | a User is a `Person`
+* Account registration is disabled, use `Person.create!()` or the admin portal
+* Announcements & notifications removed
+* Omniauth removed
+* Sitemap removed
+* Gravatar removed
+* Mini_magick removed
+* Whenever removed
+* ActionCable Devise tweaks removed
 
 ## Getting Started
 
@@ -41,14 +52,3 @@ A separate `Procfile` is generated for deploying to production.
 rails c
 Person.create!(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com', password: 'password', admin: true)
 ```
-
-## Differences from Jumpstart
-* Users are `People` | a User is a `Person`
-* Account registration is disabled, use `Person.create!()` or the admin portal
-* Announcements & notifications removed
-* Omniauth is gone
-* Sitemap is gone
-* Gravatar is gone
-* Mini_magick is gone
-* Whenever is gone
-* ActionCable not implemented for Devise
