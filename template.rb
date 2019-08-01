@@ -173,6 +173,10 @@ def add_administrate
     /FORM_ATTRIBUTES = \[/,
     "FORM_ATTRIBUTES = [\n    :password,"
 
+    gsub_file "app/dashboards/person_dashboard.rb",
+    /:encrypted_password,\n/,
+    ""
+
   gsub_file "app/controllers/admin/application_controller.rb",
     /# TODO Add authentication logic here\./,
     "redirect_to '/', alert: 'Not authorized.' unless person_signed_in? && current_person.admin?"
